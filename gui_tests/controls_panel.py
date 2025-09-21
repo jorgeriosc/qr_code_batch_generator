@@ -21,6 +21,7 @@ class ControlsPanel(QWidget):
         self.vlayout.addWidget(self.file_selector)
 
         self.checkbox = QCheckBox("Colocar código QR")
+        # self.checkbox.stateChanged.connect(self.show_state)
         self.vlayout.addWidget(self.checkbox)
 
         self.vlayout.addWidget(ColorWidget("blue"))
@@ -29,3 +30,6 @@ class ControlsPanel(QWidget):
         self.vlayout.addWidget(self.generate_button)
 
         self.setLayout(self.vlayout)
+    
+    def show_state(self, state):
+        print(state)

@@ -1,7 +1,7 @@
 import sys
 
 from PySide6.QtCore import QSize
-from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QHBoxLayout
+from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QHBoxLayout, QSizePolicy
 
 from controls_panel import ControlsPanel
 from template_viewer import TemplateViewer
@@ -21,15 +21,25 @@ class MainWindow(QMainWindow):
 
         self.controls_panel = ControlsPanel()
         self.controls_panel.file_selector.file_selected.connect(self.template_viewer.display_template)
+        self.controls_panel.checkbox.stateChanged.connect(self.template_viewer.show_dummy_code)
         self.hlayout.addWidget(self.controls_panel)
 
-        dummy_widget = QWidget()
-        dummy_widget.setLayout(self.hlayout)
-        self.setCentralWidget(dummy_widget)
+        self.central_widget = QWidget()
+        self.central_widget.setLayout(self.hlayout)
+        self.setCentralWidget(self.central_widget)
+
+        # self.template_viewer.setFixedSize(self.template_viewer.size())
+        # print(self.template_viewer.size())
 
 
 if __name__ == "__main__":
     app = QApplication([])
     window = MainWindow()
     window.show()
-    sys.exit(app.exec())
+    app.exec()
+    # sys.exit(app.exec())
+
+    print("HOLA")
+    print(window.template_viewer.size())
+    print(window.template_viewer.scaled_pixmap.size())
+    print(window.template_viewer.image_label.size())

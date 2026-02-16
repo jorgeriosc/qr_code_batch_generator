@@ -41,5 +41,5 @@ class LabelsConfig:
 
 @dataclass
 class PDFConfig:
-    file_name: str = 'labels_letter_landscape_with_borders_and_names.pdf'
+    file_name: str = 'ETIQUETAS_PARA_IMPRIMIR.pdf'
     out_path: Path = OUTPUT_DIR / file_name

@@ -11,7 +11,7 @@ pdf_config = PDFConfig()
 
 # Paths
 # labels_dir = Path("QR Code Labels")  # Directory with PNG labels
-output_pdf = "labels_letter_landscape_with_border_and_name.pdf"
+# output_pdf = "labels_letter_landscape_with_border_and_name.pdf"
 
 # Page setup
 page_width, page_height = landscape(letter)  # Letter in landscape orientation
@@ -36,7 +36,7 @@ font_size = 12
 text_gap = 5  # gap between text and top of border in points
 
 # Create PDF
-c = canvas.Canvas(output_pdf, pagesize=landscape(letter))
+c = canvas.Canvas(str(pdf_config.out_path), pagesize=landscape(letter))
 c.setFont("Helvetica", font_size)
 
 x_positions = [
